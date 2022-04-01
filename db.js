@@ -1,19 +1,19 @@
 const mongoose = require('mongoose'),
 	URLSlugs = require('mongoose-url-slugs'),
   passportLocalMongoose = require('passport-local-mongoose'),
-  bcrypt = require(&#8216;bcrypt&#8217;),
+  bcrypt = require('bcrypt'),
   SALT_WORK_FACTOR = 10;
 
 
-var UserSchema = new Schema({
+const UserSchema = new mongoose.Schema({
     username: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true },
 	address: {type: String, required: true},
 	portfolio:  [{ type: mongoose.Schema.Types.ObjectId, ref: 'portfolio' }]
 });
 
-UserSchema.pre(save, function(next) {
-    var user = this;
+UserSchema.pre('save', function(next) {
+    const user = this;
 
 	// only hash the password if it has been modified (or is new)
 	if (!user.isModified('password')) return next();
@@ -74,3 +74,6 @@ mongoose.model('UserSchema', UserSchema);
 mongoose.model('Portfolio', Portfolio);
 mongoose.model('PortfolioComponent', PortfolioComponent);
 mongoose.connect('mongodb://localhost/satoshiViewer');
+
+
+module.exports = mongoose.model('User', UserSchema);

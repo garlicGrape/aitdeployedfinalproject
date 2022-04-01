@@ -7,8 +7,8 @@ const express = require('express');
 const path = require('path');
 
 const routes = require('./routes/index');
-const portfolios = require('./routes/portfolios');
-const portfolioComponents = require('./routes/portfolio-components');
+// const portfolios = require('./routes/portfolios');
+// const portfolioComponents = require('./routes/portfolio-components');  //commenting out for now
 
 const app = express();
 
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', routes);
-app.use('/portfolios', portfolios);
-app.use('/portfolio-items', portfolioComponents);
+// app.use('/portfolios', portfolios);
+// app.use('/portfolio-items', portfolioComponents); //commenting out for now
 
 app.listen(3000);
