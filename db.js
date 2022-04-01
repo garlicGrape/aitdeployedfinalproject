@@ -73,7 +73,7 @@ mongoose.model('Wallets', Wallets);
 mongoose.model('UserSchema', UserSchema);
 mongoose.model('Portfolio', Portfolio);
 mongoose.model('PortfolioComponent', PortfolioComponent);
-mongoose.connect('mongodb://localhost/satoshiViewer');
+//mongoose.connect('mongodb://localhost/satoshiViewer'); //commenting out for now
 
 
 module.exports = mongoose.model('User', UserSchema);
