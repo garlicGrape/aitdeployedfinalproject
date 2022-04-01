@@ -42,4 +42,6 @@ app.use('/', routes);
 // app.use('/portfolios', portfolios);
 // app.use('/portfolio-items', portfolioComponents); //commenting out for now
 
-app.listen(3000);
+//app.listen(3000); commenting out for now
+
+app.listen(process.env.PORT || 3000);
