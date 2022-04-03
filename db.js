@@ -1,3 +1,8 @@
+require('dotenv').config();
+const AES = require("crypto-js/aes");
+const SHA256 = require("crypto-js/sha256");
+const CryptoJS = require("crypto-js");
+
 const mongoose = require('mongoose'),
 	URLSlugs = require('mongoose-url-slugs'),
   passportLocalMongoose = require('passport-local-mongoose'),
@@ -63,6 +68,8 @@ const Portfolio = new mongoose.Schema({
 	components: [PortfolioComponent]
 });
 
+const bytes  = CryptoJS.AES.decrypt(process.env.URL, process.env.SECRET);
+const URL = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
 
 
@@ -73,7 +80,19 @@ mongoose.model('Wallets', Wallets);
 mongoose.model('UserSchema', UserSchema);
 mongoose.model('Portfolio', Portfolio);
 mongoose.model('PortfolioComponent', PortfolioComponent);
-//mongoose.connect('mongodb://localhost/satoshiViewer'); //commenting out for now
 
+
+const mongooseOpts = {
+	useNewUrlParser: true,  
+	useUnifiedTopology: true
+  };
+
+mongoose.connect(URL, mongooseOpts, (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('connected to database'); 
+  }
+});
 
 module.exports = mongoose.model('User', UserSchema);
