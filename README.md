@@ -1,115 +1,70 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
+# Getting Started with Create React App
 
-(Project name: SatoshiViewer)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Sanchit Kumar
+## Available Scripts
 
-## Overview
+In the project directory, you can run:
 
-SatoshiViewer will be a MERN stack based crypto and traditional portfolio tracking application. This application will make use of Coinmarketcap’s python API to source the data (https://coinmarketcap.com/api/documentation/v1/#section/Introduction) , and I will be using reference code from “Cryptoverse” for the workflows as well as the screen layout design (https://reactjsexample.com/cryptoverse-a-crypto-tracking-app-made-with-reactjs-nodejs-ejs-vanilla-js-and-axios-cheerio/).
+### `npm start`
 
- This application using react as the front end, will allow for a very intuitive and real time view of crypto exposure and portfolio analytics. The portfolio components of the user will be stored within mongodb as will be user preferences and the screen layouts. This application will be deployed on Heroku, and will be able to be used on both your desktop and mobile device in order to give a multichannel experience. Lastly, this application’s url will be able to be changed to a custom URL nginx.   
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
+### `npm test`
 
-## Data Model
- 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-The application will store Users information ( wallets , preferences ) as well as
-* users can have multiple portfolios (via references)
-* each portfolio can have multiple portfolioComponents (by embedding)
+### `npm run build`
 
-An Example Wallet:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```javascript
-{
-  userSchema: // list of user wallets
-}
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-An Example UserSchema:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```javascript
-{
-  username: "cryptotrader",
-  password: // a password hash,
-  address: //hashed wallet address
-  portfolios: // an array of references to PortfolioComponent documents
-}
-```
+### `npm run eject`
 
-An Example Portfolio with Embedded PortfolioComponents:
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-```javascript
-{
-  address: // a reference to a UserSchema object
-  name: "Crypto Portfolio",
-  components: [
-    { coin: "ETH", quantity: "9876"},
-    { name: "BTC", quantity: "2"},
-  ],
-  createdAt: // timestamp
-}
-```
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## [Link to Commented First Draft Schema](db.js) 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Wireframes
+## Learn More
 
-/ - Homescreen view 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-![Homescreen](documentation/homeScreen.png)
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-/signup - page for creating account
+### Code Splitting
 
-![signup](documentation/signUp.png)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-/login - page for logging in to your account
+### Analyzing the Bundle Size
 
-![login](documentation/logIn.png)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-/coinview - page for looking at coin and securites prices 
+### Making a Progressive Web App
 
-![Coin View](documentation/coinView.png)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-## Site map
+### Advanced Configuration
 
-Here's the [Sitemap](documentation/Satoshi-Viewer-Sitemap.png)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-## User Stories or Use Cases
+### Deployment
 
-1. as non-registered user, I can register a new account with the site
-2. as a user, I can log in to the site
-3. as a user, I can add a Wallet  
-4. as a user, I can create a Portfolio
-5. as a user, I can add Portfolio Components to a Portfolio
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
+### `npm run build` fails to minify
 
-## Research Topics
-
-* (5 points) Incorporating ReactJS
-    * Will be using ReactJS for all the front end work 
-    * Will need to research MVC template and how to use a React frontend with an express
-      backend. 
-* (3 points) Unit testing with JavaScript
-    * using Mocha and Chai I will create unit test in "test/projectTest.js"
-    * Will include at least 4 unit tests
-* (3 points) Incorporating Coinmarketcaps's API 
-    * Will need to research how to intergrate a python API with an express backend.
-    * This API will allow me to get real time coin data that will populate the users
-      portfolio and coin view.
-* (3 points) Incorporating Web3 wallet connect. 
-    * Essentially will allow connectio to metamask and other wallets so users can access 
-      their wallets from the website. 
-
-
-## [Link to Initial Main Project File](app.js) 
-
-
-## Annotations / References Used
-
-
-1. [db.js Schema notes](https://blog.murewaashiru.com/getting-started-with-mongodb-transactions-using-nodejs) 
-2. [General idea for coin viewer wireframe](https://reactjsexample.com/cryptoverse-a-crypto-tracking-app-made-with-reactjs-nodejs-ejs-vanilla-js-and-axios-cheerio/)
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
