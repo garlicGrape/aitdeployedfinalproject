@@ -160,5 +160,55 @@ app.use('/', routes);
 // app.use('/portfolio-items', portfolioComponents); //commenting out for now
 
 //app.listen(3000); commenting out for now
+const WatchList = require("./models/watchlistModel");
+app.post("/addtowatchlist", function (req, res) {
+  const coin = req.body.coin;
+  const description = req.body.description;
+  console.log(coin);
+  console.log(description);
+
+
+  if (!coin || !description) {
+    // no username or password received in the POST body... send an error
+    res
+      .status(401)
+      .json({ success: false, message: `no coin or description supplied.` });
+  }
+  const newWatchList = new WatchList({ coin: coin, description: description });
+  newWatchList.save(function (err) {
+    if (err) {
+      console.log(err);
+      if (err.name === "MongoServerError" && err.code === 11000) {
+        // Duplicate username
+        return res
+          .status(422)
+          .send({ success: false, message: "User already exist!" });
+      }
+      // Some other error
+      return res.status(401).send(err);
+    }
+    return res.json({ success: true, coin: coin, description: description });
+  });
+ 
+  //res.json({ success: true, coin: coin, description: description }); // send the token to the client to store
+  
+  return;
+});
+
+app.get("/loadwatchlist", function (req, res) {
+  
+
+  WatchList.find({}, function (err, coins) {
+    console.log(coins);
+    if (coins == null || err)
+      res.status(401).json({ success: false, message: `error` });
+    else {
+          res.json({ success: true, coins:coins }); // send the token to the client to store
+        
+      };
+    
+  });
+  return;
+});
 
 app.listen(  process.env.PORT || 4000);

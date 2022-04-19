@@ -18,6 +18,8 @@ import Signup from "./Signup";
 import Logout from "./Logout";
 import Stock from './Stock';
 import StockDisplay from "./StockDisplay";
+import CreateWatchList from "./CreateWatchlist";
+import ShowWatchList from "./ShowWatchList";
 
 
 
@@ -34,6 +36,8 @@ function App(props) {
 
       <Route exact path="/portfolios" component={StockDisplay}></Route>
       <Route exact path="/coins" component={Stock}></Route>
+      <Route exact path="/createwatchlist" component={CreateWatchList}></Route>
+      <Route exact path="/showwatchlist" component={ShowWatchList}></Route>
       <Route exact path="/login" component={Login}></Route>
       <Route exact path="/signup" component={Signup}></Route>
       <Route exact path="/logout" component={Logout}></Route>
@@ -90,6 +94,14 @@ const Homepage = (props) => {
         <Link className="App-link" to="/portfolios">
           {" "}
           <MenuItem onClick={handleClose}>Portfolios</MenuItem>
+        </Link>
+        <Link className="App-link" to="/createwatchlist">
+          {" "}
+          <MenuItem onClick={handleClose}>Create WatchList</MenuItem>{" "}
+        </Link>
+        <Link className="App-link" to="/showwatchlist">
+          {" "}
+          <MenuItem onClick={handleClose}>Show WatchList</MenuItem>{" "}
         </Link>
       </Menu>
 

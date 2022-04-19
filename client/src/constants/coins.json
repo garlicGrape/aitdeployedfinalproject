@@ -1,0 +1,15 @@
+{
+    "BTC": {
+        "name": "Bitcoin",
+        "description": "Bitcoin"
+    },
+    "ETH": {
+        "name": "Ethereum",
+        "description": "Ethereum"
+    },
+    "XRP": {
+        "name": "Ripple",
+        "description": "Ripple"
+    }
+    
+}
